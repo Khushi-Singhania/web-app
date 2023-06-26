@@ -19,9 +19,9 @@ jobs:
             - name: Create a Github Release
               uses: actions/create-release@v1
               env:
-                GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                tag_name: $${{github.run_number}}
+                tag_name: $${{ github.run_number }}
     
     build-project:
         name: Build Project
