@@ -1,0 +1,13 @@
+name: Integrate Node Application
+on: push
+jobs:
+    build-node:
+        name: Build Node
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              run: actions/checkout@v2
+            - name: Install NPM
+              run: npm i
+            - name: Build assests
+              run: npm run build 
