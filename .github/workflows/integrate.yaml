@@ -16,7 +16,7 @@ jobs:
               uses: thedoctor0/zip-release@master
               with:
                 filename: site.zip
-            - name: Create Github Release
+            - name: Create a Github Release
               uses: actions/create-release@v1
               env:
                 GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
