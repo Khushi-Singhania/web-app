@@ -13,7 +13,7 @@ jobs:
             - name: Display artifact
               run: ls -R
             - name: Zip file
-              uses: thedoctor0@zip-release@master
+              uses: thedoctor0/zip-release@master
               with:
                 filename: site.zip
     build-project:
