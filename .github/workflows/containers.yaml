@@ -1,3 +1,4 @@
+name: Build and Push Docker Container
 on: push
 jobs:
   build-container:
@@ -11,4 +12,9 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           paassword: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build Docker Image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
           
