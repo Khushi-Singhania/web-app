@@ -1,7 +1,7 @@
 on: push
 jobs:
   build-container:
-    name: Build Container
+    name: Build Docker Container
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
