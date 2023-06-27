@@ -17,4 +17,6 @@ jobs:
         with:
           context: .
           push: true
+          tags: khushis/nextwebapp:latest
+          
           
