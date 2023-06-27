@@ -5,72 +5,24 @@ import Layout from "../components/layout";
 import Jumbotron from "../components/jumbotron";
 import Board from "../components/board";
 import Locations from "./data.json"
+const express = require('express');
+const app = express();
+const PORT = 3000;
 
-const Index = ({ locationGroups }) =>
-    <Layout>
-        <Jumbotron />
-        <section className="container">
-            <div className="card bg-dark">
-                <div className="card-body">
-                    <h5 className="card-title display-4 text-center">
-                        Featured Locations
-                    </h5>
-                </div>
-            </div> 
-            {locationGroups.map((group) => (
-                <div className="card-group" key={group.id}>
-                    {group.locations.map((location) => (
-                        <div className="card text-white bg-dark" key={location.id}>
-                            {getLocation(location)}
-                        </div>
-                    ))}
-                </div>
-            ))}
-        </section>
-    </Layout>;
+// Define a route for calculating crop yield
+app.get('/calculate-crop-yield', (req, res) => {
+  // Read the field area and crop yield per hectare from the query parameters
+  const fieldArea = parseFloat(req.query.fieldArea);
+  const cropYieldPerHectare = parseFloat(req.query.cropYieldPerHectare);
 
-const getLocation = (location) =>
-    <div className="card-body">
-        <h5 className="card-title text-center">
-            {location.name}
-        </h5>
-        <div className="card-text my-2">
-            <Board location={location} />
-        </div>
-        <p className="card-text">
-            <small className="text-muted">
-                {location.mailingAddress}
-            </small>
-        </p>
-        <Link href="/locations/[id]" as={`/locations/${location.id}`}>
-            <a className="btn btn-secondary">
-                Learn more
-            </a>
-        </Link>
-    </div>;  
+  // Perform the calculation
+  const cropYield = fieldArea * cropYieldPerHectare;
 
-export const getStaticProps = async (context) =>
-{
-    var items = [...Locations]
-        .orderBy(l => l.lastRenovationDate)
-        .reverse()
-        .take(4);
-    return {
-        props: {
-            locationGroups: chunkArray(items, 2)
-        }
-    };
-}
+  // Return the calculated crop yield as the response
+  res.json({ cropYield });
+});
 
-const chunkArray = (items, size) => {
-    var results = [];
-    while(items.length) {
-        results.push({
-            id: uuidv4(),
-            locations: items.splice(0, 2)
-        });
-    }
-    return results;
-}
-
-export default Index
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

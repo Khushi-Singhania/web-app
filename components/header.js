@@ -3,7 +3,7 @@ import Head from "next/head";
 const Header = () =>
     <Head>
         <title>
-            Contoso Spaces
+            Agriculture
         </title>
     </Head>;
 

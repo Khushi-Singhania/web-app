@@ -10,7 +10,7 @@ const Footer = () =>
                         <i className="fa fa-building-o fa-stack-1x"></i>
                     </i>
                     <span className="ml-2">
-                        Contoso Spaces
+                        Agriculture
                         &copy; 2020
                     </span>
                 </a>
@@ -20,13 +20,6 @@ const Footer = () =>
                     <Link href="/">
                         <a className="nav-link">
                             Home
-                        </a>
-                    </Link>
-                </li>
-                <li className="nav-item">
-                    <Link href="/locations">
-                        <a className="nav-link">
-                            Locations
                         </a>
                     </Link>
                 </li>
